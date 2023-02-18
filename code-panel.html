@@ -11,8 +11,8 @@
     <h1 style="text-align: center; font-size: 100px; color: white;">Code Panel</h1>
     <br><br><br><br><br>
     <div>
-        <button onclick="clearCode()" style="cursor: pointer; float: right; font-size: 60px; margin-bottom: 9px; margin-right: 9px;">Clear</button>
-        <button onclick="submitCode()" style="cursor: pointer; float: left; font-size: 60px; margin-bottom: 9px; margin-left: 9px;">Submit</button>
+        <button onclick="clearCode()" style="cursor: pointer; float: right; font-size: 60px; margin-bottom: 9px; margin-right: 9px;" id="clearsubmit">Clear</button>
+        <button onclick="submitCode()" style="cursor: pointer; float: left; font-size: 60px; margin-bottom: 9px; margin-left: 9px;" id="clearsubmit">Submit</button>
         <textarea id="codeInput" placeholder="Enter your code here" style="width: 1843px; font-size: 15px; height: 460px; margin-left: 9px; margin-right: 9px; margin-bottom: 9px; resize: none;"></textarea>
     </div>
 </body>
@@ -20,7 +20,10 @@
 <script>
     function submitCode() {
     var setCode = document.getElementById("codeInput").value;
-document.getElementById("codeInput").value = "";
+    if (setCode.substring(0, 9) === 'javascript') {
+        setCode = setCode.substring(10);
+    };
+    document.getElementById("codeInput").value = "";
     eval(setCode);
     };
     function clearCode() {
